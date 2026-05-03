@@ -1,0 +1,2373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KD Tours And Travels</title>
+
+<!-- ICON LIBRARY -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:22px;
+  font-weight:bold;
+  color:#000;
+}
+
+.logo img{
+   height:95px;   /* 🔥 bigger logo */
+  width:auto;
+}
+
+body {
+    background: #f5f5f5;
+    overflow-x:hidden
+}
+
+
+/* BLUR */
+#mainContent.blur {
+    filter: blur(6px);
+    pointer-events: none;
+}
+
+/* NAVBAR */
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 30px;
+    background:white;
+    position:relative;
+}
+
+
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* NAV LINKS */
+.navbar{
+  display:flex;
+  justify-content: space-between;
+  align-items:center;
+  padding:20px 30px;
+  background:white;
+}
+
+.nav-links{
+  display:flex;
+  gap:30px;
+  align-items:center;
+  margin-left:auto;   /* 👉 RIGHT SIDE ला नेण्यासाठी */
+  position:static;    /* 👉 IMPORTANT */
+}
+
+.nav-links.show{
+  display:flex;
+}
+
+.nav-links > div{
+  padding:12px 20px;
+  border-top:1px solid #eee;
+}
+
+.menu-icon{
+    display:none;
+    font-size:24px;
+    cursor:pointer;
+    z-index:10001;       /* 🔥 important */
+    position: relative;  /* 🔥 important */
+} 
+
+/* DROPDOWN */
+
+.dropdown{
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: auto;
+  background: white;
+  width: 180px;
+
+  display: none;   /* ✅ must */
+  flex-direction: column;
+
+  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+  z-index: 10000;
+}
+
+.dropdown div{
+  padding: 12px 16px;   /* 👉 gap वाढवतो */
+  font-size: 16px;      /* 👉 text मोठं */
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.dropdown div:hover{
+  background: #16a34a;
+  color: white;
+}
+
+/* HERO */
+.hero {
+    height: 90vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 60px;
+
+    background:
+    linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+    url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80')
+    no-repeat center/cover;
+
+    color: white;
+}
+
+.hero-text {
+    max-width: 55%;
+}
+
+.hero-text h1 {
+    font-size: 44px;
+    margin-bottom: 15px;  /* 👈 gap between h1 and p */
+}
+
+.hero-text p{
+    font-size: 18px;   /* 👈 आधी 16px होतं */
+    line-height: 1.7;
+    color: #e5e5e5;
+}
+
+/* TEXT */
+.fancy-text{
+    font-family: "Georgia", serif;
+    font-size: 24px;
+    font-weight: bold;
+    display: block;
+    padding: 20px 12px;
+    background: linear-gradient(135deg, #bbf7d0, #dcfce7);
+    color: #166534;
+    text-align: center;
+    margin: -45px -45px 15px -45px;
+}
+
+/* BOOKING */
+.booking-box {
+     
+    overflow: visible;
+    background: white;
+    padding: 50px;
+    border-radius: 12px;
+    width: 380px;
+    position: relative;
+    color: black;
+     
+}
+
+.booking-box select {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    padding: 16px 14px;
+    margin:  12px 0 20px 0;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    
+}
+
+.booking-box h4 {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+
+/* BUTTON */
+.btn-group {
+    display: flex;
+    width: 100%;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.btn {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    cursor: pointer;
+    background: #f3f4f6;
+    color: #333;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.btn i {
+    margin-right: 8px;
+}
+
+.btn:not(:last-child) {
+    border-right: 1px solid #ddd;
+}
+
+.btn.active {
+    background: #16a34a;
+    color: white;
+}
+
+/* GO BUTTON */
+.go-btn {
+    width: 100%;
+    margin-top: 15px;
+    padding: 12px;
+    background: linear-gradient(135deg, #16a34a, #22c55e, #4ade80);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* POPUP */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-box {
+    width: 360px;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.popup-header {
+    background: #16a34a;
+    color: white;
+    padding: 18px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.popup-body {
+    padding: 20px;
+    text-align: center;
+}
+
+.popup-header button{
+    width:30px;
+    height:30px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:transparent;  /* 🔥 हे main fix */
+    border:none;
+    color:white;
+    font-size:20px;
+    cursor:pointer;
+}
+
+.popup-body a:hover{
+    text-decoration: underline;
+}
+
+/* ABOUT SECTION */
+.about-section {
+    padding: 80px 60px;
+    text-align: center;
+    background: #f3f4f6;
+}
+
+.about-section h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.about-section p {
+    max-width: 900px;
+    margin: auto;
+    color: #555;
+    font-size: 18px;   /* 👈 size वाढवला */
+    line-height: 1.8;  /* 👈 spacing सुंदर दिसेल */
+}
+
+/* STATS */
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 50px;
+    flex-wrap: wrap;
+}
+
+/* CARD DESIGN */
+.card {
+    background: #ffffff;
+    padding: 35px 20px;
+    width: 240px;
+    height: 200px; /* 👈 height increase */
+    border-radius: 15px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* ICON */
+.card i {
+    font-size: 28px;
+    color: #16a34a;
+    margin-bottom: 10px;
+}
+
+/* NUMBER */
+.card h3 {
+    font-size: 36px;
+    color: #16a34a;
+}
+
+/* TEXT */
+.card p {
+    margin-top: 8px;
+    color: #666;
+    font-size: 15px;
+}
+
+.call-box {
+    border: 1px solid #d1fae5;
+    background: #ecfdf5;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 15px 0;
+}
+
+.call-box h2 {
+    color: #16a34a;
+}
+
+.call-btn {
+    background: #16a34a;
+    color: white;
+    padding: 14px;
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+}
+
+.later {
+    margin-top: 12px;
+    background: #f1f1f1;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.footer-text {
+    margin-top: 15px;
+    font-size: 12px;
+}
+
+@keyframes moveBg {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+/* बाकी same */
+@media (max-width:768px){
+
+  .navbar{
+    position:relative;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:1000;
+    background:white;
+  }
+
+   .logo{
+    gap:8px;
+    font-size:16px;   /* text small on mobile */
+  }
+
+  .logo img{
+    height:45px;   /* 🔥 mobile size */
+  }
+
+  .menu-icon{
+    display:block;
+    font-size:24px;
+    cursor:pointer;
+  }
+
+  .nav-links{
+    display:none;
+    flex-direction:column;
+    background:white;
+    position:absolute;
+    top:100%;
+    left:0;
+    width:100%;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+    z-index:9999;
+  }
+
+  .nav-links.show{
+    display:flex;
+  }
+
+  .nav-links > div{
+    padding:12px 20px;
+    border-top:1px solid #eee;
+  }
+
+  /* 🔥 ADD THIS (IMPORTANT FIX) */
+  .hero{
+    flex-direction: column;
+    height: auto;
+    gap: 20px;
+    padding: 25px 15px;   /* 👉 इथे add कर */
+    text-align: center; 
+  }
+
+  .hero-text,
+  .booking-box{
+    max-width: 100%;
+    width: 100%;
+  }
+
+}
+
+/* ================= TESTIMONIALS ================= */
+
+.testimonials{
+    background:#c5d1a3;
+    padding:60px 0;
+    text-align:center;
+    
+}
+
+.testimonials h2{
+    margin-bottom:30px;
+    font-size:28px;
+}
+
+/* CONTAINER */
+.testimonial-container{
+    display:flex;
+    gap:20px;
+    overflow-x: auto;
+    scroll-behavior:smooth;
+    padding:10px 20px;
+
+    /* 🔥 smooth snap */
+    scroll-snap-type: x mandatory;
+}
+
+/* 🔥 scrollbar always visible */
+.testimonial-container::-webkit-scrollbar{
+    height:8px;
+}
+
+.testimonial-container::-webkit-scrollbar-track{
+    background:#e5e7eb;
+    border-radius:10px;
+}
+
+.testimonial-container::-webkit-scrollbar-thumb{
+    background:#9ca3af;
+    border-radius:10px;
+}
+
+.testimonial-container::-webkit-scrollbar-thumb:hover{
+    background:#6b7280;
+    
+}
+
+/* CARD */
+
+*{
+    box-sizing: border-box;
+}
+
+.testimonial-container{
+    display:flex;
+    gap:20px;
+    overflow-x: auto;
+    scroll-behavior:smooth;
+    padding:10px 20px;
+
+    /* 🔥 smooth snap */
+    scroll-snap-type: x mandatory;
+}
+
+/* 🔥 scrollbar always visible */
+.testimonial-container::-webkit-scrollbar{
+    height:15px;
+}
+
+.testimonial-container::-webkit-scrollbar-track{
+    background:#e5e7eb;
+    border-radius:10px;
+}
+
+.testimonial-container::-webkit-scrollbar-thumb{
+    background:#9ca3af;
+    border-radius:10px;
+}
+
+.testimonial-container::-webkit-scrollbar-thumb:hover{
+    background:#6b7280;
+    
+}
+
+/* CARD */
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.testimonial-card{
+    flex: 0 0 420px !important;
+    width: 60000px !important;
+    height: 380px;
+
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+
+    text-align: left;
+
+    scroll-snap-align: start;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    overflow: hidden;
+}
+
+
+
+.testimonial-card:hover{
+    transform:translateY(-5px);
+}
+
+/* QUOTE ICON */
+.quote{
+    font-size:30px;
+    margin-bottom:10px;
+    color:#333;
+}
+
+/* TEXT */
+.testimonial-card p{
+    font-size:17px;
+    line-height:1.7;
+    color:black;
+}
+
+/* NAME */
+.testimonial-card h4{
+    margin-top:12px;
+    font-size:16px;
+}
+
+.testimonial-card:hover{
+    transform:translateY(-5px);
+}
+
+/* QUOTE ICON */
+.quote{
+    font-size:30px;
+    margin-bottom:10px;
+    color:#333;
+}
+
+/* TEXT */
+
+
+/* NAME */
+.testimonial-card h4{
+    margin-top:12px;
+    font-size:16px;
+}
+
+/* STARS */
+.stars{
+     color:#16a34a;
+    margin-top:5px;
+    font-size:24px; 
+}
+
+.review-footer{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:10px;
+}
+
+.review-footer span{
+    font-size:12px;
+    color:black;
+}
+
+
+
+/* PROCESS SECTION */
+.process-section{
+    background:#f3f4f6;
+    padding:70px 60px;
+}
+
+.process-section h2{
+    font-size:36px;
+    margin-bottom:15px;
+}
+
+.process-subtext{
+    font-size:18px;
+    color:#555;
+    margin-bottom:25px;
+}
+
+.process-list{
+    padding-left:20px;
+}
+
+.process-list li{
+    margin-bottom:20px;
+}
+
+.process-list li b{
+    font-size:18px;
+}
+
+.process-list li p{
+    margin-top:5px;
+    color:#444;
+    line-height:1.6;
+}
+
+
+/* CONNECT SECTION */
+.connect-section{
+    background:#f3f4f6;
+    padding:10px 60px;
+}
+
+.connect-section h2{
+    font-size:34px;
+    margin-bottom:8px;
+    margin-top: 0;
+}
+
+.connect-section p{
+    font-size:18px;
+    color:#555;
+    line-height:1.7;
+    max-width:1000px;
+    margin-top: 0;
+}
+
+.footer{
+    background:#000;
+    color:#fff;
+    padding:50px 60px 20px;
+}
+
+/* TOP */
+.footer-top{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:40px;
+}
+
+/* COLUMN */
+.footer-col h3{
+    margin-bottom:15px;
+    font-size:18px;
+}
+
+.footer-col p{
+    margin-bottom:10px;
+    color:#ccc;
+    cursor:pointer;
+}
+
+/* CITY LIST */
+.city-list{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:10px 20px;
+}
+
+.city-list span{
+    color:#22c55e;
+}
+
+/* ICON */
+.city-list i{
+    margin-right:8px;
+}
+
+/* SOCIAL */
+.social-icons i{
+    font-size:20px;
+    margin-right:15px;
+    cursor:pointer;
+}
+
+.social-icons a {
+    color: white;
+    margin-right: 15px;
+    font-size: 20px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.social-icons a:hover {
+    color: #22c55e;
+}
+
+/* LINE */
+.footer hr{
+    margin:30px 0 15px;
+    border:0.5px solid #333;
+}
+
+/* COPYRIGHT */
+.footer-bottom{
+    font-size:14px;
+    color:#aaa;
+}
+
+.city-content{
+     background: #f3f4f6 !important;
+    padding:60px 20px;
+    margin-top:20px;
+    border-radius:10px;
+}
+
+.city-content h2{
+    text-align:center;
+    font-size:32px;
+    margin-bottom:25px;
+}
+
+.city-text{
+    max-width:900px;
+    margin:auto;
+}
+
+.city-text p{
+    font-size:17px;
+    line-height:1.9;
+    color:#333;
+    text-align:justify;
+    margin-bottom:15px;
+    
+}
+
+.city-page{
+    background: #f3f4f6 !important;
+    padding: 60px 20px;
+}
+
+.city-wrapper{
+    max-width:900px;
+    margin:auto;
+    line-height:1.8;
+}
+.city-text b,
+.city-text strong{
+    color: #111;
+    font-weight: 700;
+}
+
+/* TIME */
+
+.city-places{
+    padding: 50px 20px;
+    background: #f3f4f6;
+    text-align: center;
+     padding-top: 10px; 
+}
+
+.city-places h2{
+    margin-bottom: 25px;
+}
+
+.city-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);  /* 🔥 3 cards per row */
+    gap: 20px;
+    max-width: 1000px;
+    margin: auto;
+    margin-top: 25px;
+}
+.city-card{
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    text-align: left;
+    position: relative;   /* IMPORTANT */
+    min-height: 200px;
+}
+
+/* Green line */
+.city-card::after{
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #5cb85c;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.city-card h3{
+    margin-bottom: 10px;
+    font-size: 22px;
+}
+
+.city-card p{
+    font-size: 16px;
+    color: #555;
+}
+
+
+/* MOBILE FIX */
+@media (max-width:768px){
+
+    .menu-icon{
+      display:block;
+      z-index:10001;
+      position: relative;
+  }
+  
+  /* NAVBAR */
+  .nav-links{
+    display: none;
+    flex-direction: column;
+    background: white;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+  }
+
+  .nav-links.show{
+    display: flex;
+  }
+
+  /* HERO SECTION */
+  .hero{
+    flex-direction: column;
+    height: auto;
+    padding: 25px 15px;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .hero-text{
+    max-width: 100%;
+  }
+
+  .hero-text h1{
+    font-size: 26px;   /* 🔥 reduce size */
+  }
+
+  .hero-text p{
+    font-size: 15px;
+  }
+
+  /* BOOKING BOX */
+  .booking-box{
+    width: 100%;
+    padding: 25px;
+  }
+
+  /* ABOUT SECTION */
+  .about-section{
+    padding: 40px 20px;
+  }
+
+  /* CARDS */
+  .stats{
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card{
+    width: 100%;
+    max-width: 280px;
+  }
+
+  /* CITY GRID */
+  .city-grid{
+    grid-template-columns: repeat(1, 1fr);  /* 🔥 1 card per row */
+  }
+
+  /* FOOTER */
+  .footer-top{
+    flex-direction: column;
+  }
+
+  .city-list{
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  /* PROCESS / SERVICES / WHY */
+  .process-section,
+  .services-section,
+  .why-section,
+  .connect-section{
+    padding: 30px 20px;
+  }
+
+}
+.why-section{
+    background: #f3f4f6;
+    padding: 70px 60px;
+}
+
+.why-section h2{
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.why-subtext{
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.why-list{
+    list-style: disc;
+    padding-left: 20px;
+}
+
+.why-list li{
+    margin-bottom: 20px;
+}
+
+.why-list li b{
+    font-size: 18px;
+}
+
+.why-list li p{
+    margin-top: 5px;
+    color: #444;
+    line-height: 1.6;
+}
+
+.services-section{
+    background: #f3f4f6;
+
+    margin-top: 1px;   /* 🔥 gap वरून येईल */
+    padding: 1px 60px;
+    padding-top: 1px;
+}
+
+.services-section h2{
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.services-subtext{
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.services-list{
+    list-style: disc;
+    padding-left: 20px;
+}
+
+.services-list li{
+    margin-bottom: 20px;
+}
+
+.services-list li b{
+    font-size: 18px;
+}
+
+.services-list li p{
+    margin-top: 5px;
+    color: #444;
+    line-height: 1.6;
+}
+
+/* 🔥 CONTACT POPUP DESIGN */
+#contactPopup .popup-box{
+    width: 400px;
+    border-radius: 18px;
+    overflow: hidden;
+    animation: popupFade 0.3s ease;
+}
+
+/* HEADER */
+#contactPopup .popup-header{
+    background: linear-gradient(135deg, #16a34a, #22c55e);
+    padding: 20px;
+    color: white;
+}
+
+#contactPopup .popup-header h2{
+    margin: 0;
+    font-size: 22px;
+}
+
+/* BODY */
+#contactPopup .popup-body{
+    padding: 25px;
+    background: #ffffff;
+}
+
+/* TEXT */
+#contactPopup .popup-body p{
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 15px;
+}
+
+/* ICON STYLE LINKS */
+#contactPopup .popup-body a{
+    display: inline-block;
+    margin-top: 5px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    background: #f0fdf4;
+    color: #16a34a;
+    font-weight: 500;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+/* HOVER EFFECT */
+#contactPopup .popup-body a:hover{
+     background: #f3f4f6; 
+    color: white;
+}
+
+/* CLOSE BUTTON */
+#contactPopup .popup-header button{
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* ANIMATION */
+@keyframes popupFade{
+    from{
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to{
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div id="mainContent">
+
+<div class="navbar">
+   <div class="logo">
+  <img src="images/logo.png" alt="KD Tours And Travels">
+  <span>KD Tours And Travels</span>
+</div>
+
+    <div class="menu-icon" onclick="toggleMenu()">
+    <i class="fa-solid fa-bars"></i>
+</div>
+
+    <div class="nav-links">
+        <div onclick="goHome()">Home</div>
+
+        <div onclick="toggleDropdown()">
+            Locations ▼
+            <div id="locationDropdown" class="dropdown">
+    <div onclick="selectCity('Pune')">Pune</div>
+    <div onclick="selectCity('Mumbai')">Mumbai</div>
+    <div onclick="selectCity('Nashik')">Nashik</div>
+    <div onclick="selectCity('Satara')">Satara</div>
+    <div onclick="selectCity('Kolhapur')">Kolhapur</div>
+    <div onclick="selectCity('Ratnagiri')">Ratnagiri</div>
+    <div onclick="selectCity('Sangli')">Sangli</div>
+    <div onclick="selectCity('Solapur')">Solapur</div>
+    <div onclick="selectCity('Goa')">Goa</div>
+</div>
+        </div>
+
+        <!-- 👇 इथे paste कर -->
+    <!-- 🔥 ADD THIS -->
+    <div onclick="openContactPopup()">Contact</div>
+    </div>
+</div>
+
+<div class="hero"  id="hero">
+
+<div class="hero-text">
+    <h1 id="title">Book a Cab from the Best Cab service - KD Tours And Travels</h1>
+
+    <p id="desc">
+        KD Tours And Travels is your Trusted Cab Service for Seamless Journeys! 
+        Book Now and Experience Smooth & Reliable Transportation at Your Fingertips.
+         At KD Tours And Travels, we allow you to enjoy flexibility with respect to start and endpoints.
+          You can book cars for one-way drops, outstation round-trips and local transfers.
+           Moreover, we provide door-step pickup and drop, believe in complete transparency, 
+           and adhere strictly to business ethics.
+    </p>
+</div>
+
+<div class="booking-box">
+
+<h3 class="fancy-text">Find the right cab now!</h3>
+
+<h4>From</h4>
+<select>
+    <option>Pickup Location</option>
+     <option> Pune </option>
+     <option> Mumbai </option>
+     <option> Satara </option>
+     <option> Kolhapur </option>
+     <option> Ratnagiri </option>
+     <option> Goa </option>
+     <option> Solapur </option>
+     <option> Kolhapur </option>
+     
+</select>
+
+<h4>To</h4>
+<select>
+    <option>Drop Location</option>
+    <option> Pune </option>
+     <option> Mumbai </option>
+     <option> Satara </option>
+     <option> Kolhapur </option>
+     <option> Ratnagiri </option>
+     <option> Goa </option>
+     <option> Solapur </option>
+     <option> Kolhapur </option>
+    
+</select>
+
+<div class="btn-group">
+    <button id="oneWayBtn" class="btn active" onclick="setTrip('one')">
+        <i class="fa-solid fa-arrow-right"></i> One Way
+    </button>
+    <button id="roundTripBtn" class="btn" onclick="setTrip('round')">
+        <i class="fa-solid fa-rotate"></i> Round Trip
+    </button>
+</div>
+
+<button class="go-btn" onclick="openPopup()">Go</button>
+
+</div>
+</div>
+</div>
+
+<!-- POPUP -->
+<div id="popup" class="popup">
+<div class="popup-box">
+
+<div class="popup-header">
+<div>
+<h2>Quick Phone Booking</h2>
+<p>We're here to help!</p>
+</div>
+<button onclick="closePopup()">✖</button>
+</div>
+
+<div class="popup-body">
+
+<p>Our online booking system is currently being upgraded to serve you better.</p>
+
+<p>For immediate booking, please call our 24/7 support team.</p>
+
+<div class="call-box">
+<p>Call us now</p>
+<h2>📞 +917057905003</h2>
+<small>Available 24/7</small>
+</div>
+
+<button class="call-btn" onclick="callNow()">📞 Call Now to Book</button>
+
+<div class="later" onclick="closePopup()">I'll call later</div>
+
+<div class="footer-text">
+✔ Same reliable service ✔ Instant confirmation ✔ Best rates guaranteed
+</div>
+
+</div>
+</div>
+</div>
+
+
+<!-- ABOUT SECTION -->
+<div class="about-section ">
+
+    <h2>Know about us</h2>
+
+    <p><b>
+        KD Tours And Travels is your ideal travel partner for cabs across Maharashtra.
+        With 24/7 service and support, clean and well-maintained cabs,
+        multiple convenient locations, we ensure a seamless experience every time.
+        Choose from our cab options including one-way, outstation,
+        airport drops and more.
+    </b></p>
+
+    <div class="stats">
+
+    <div class="card">
+        <i class="fa-regular fa-face-smile"></i>
+        <h3>10K+</h3>
+        <p>Happy Customers</p>
+    </div>
+
+    <div class="card">
+        <i class="fa-solid fa-hourglass-half"></i>
+        <h3>8+</h3>
+        <p>Years of Experience</p>
+    </div>
+
+    <div class="card">
+        <i class="fa-solid fa-users"></i>
+        <h3>20+</h3>
+        <p>Strong Team</p>
+    </div>
+
+    <div class="card">
+        <i class="fa-regular fa-star"></i>
+        <h3>4.7/5</h3>
+        <p>Highly rated on Google Reviews</p>
+    </div>
+
+</div>
+           
+</div>
+
+
+<!-- TESTIMONIAL SECTION -->
+<section class="testimonials ">
+
+<h2>Read out what our Customers have to say!</h2>
+
+<div class="testimonial-container">
+
+<div class="testimonial-card">
+    <div class="quote">❝</div>
+    <p>Our trip from Pune to Mahabaleshwar was very convenient. Our driver Krishna was very polite and accommodating. He patiently showed us around Mahabaleshwar. The car was very neat and clean. 
+        Overall great experience and trustworthy service with KD Tours And Travels.</p>
+    <h3>Aasha Ujagavkar</h3>
+    <div class="stars">★★★★★</div>
+    <span><b>1 month ago</b></span>
+</div>
+
+<div class="testimonial-card">
+    <div class="quote">❝</div>
+    <p>I am happy with the service, they are on time and drive safely. Till now had used their service 4 times for different cities and had safest journey. 
+        Well done Mandeshi Cabs team keep up the good work.</p>
+    <h4>Rajshri Bhosale</h4>
+    <div class="stars">★★★★★</div>
+    <span><b>2 months ago</b></span>
+</div>
+
+<div class="testimonial-card">
+    <div class="quote">❝</div>
+    <p>Highly impressed. The owner Vijay is very reliable, professional and polite. 
+        All the cars are always clean, on time and driven with utmost respect to safety. 
+        I had an amazing experience
+</p>
+    <h4>Gaurav </h4>
+    <div class="stars">★★★★★</div>
+    <span><b>1 month ago</b></span>
+</div>
+
+<div class="testimonial-card">
+    <div class="quote">❝</div>
+    <p>It's an easy and trustworthy cab service option. Toooo much good experiences and 
+        the way they are making strong bond between passenger and driver... Great One 😇</p>
+    <h4>Raya Patil</h4>
+    <div class="stars">★★★★★</div>
+    <span><b>1 month ago</b></span>
+</div>
+
+<div class="testimonial-card">
+    <div class="quote">❝</div>
+    <p>Travelled with family for 3 days’ outstation trip and booked KD Tours And Travels. The service and driver are highly recommended. Safe driving, clean car and timely pick up and drop 
+        along with reasonable rates. We will book again.</p>
+    <h4>Rohit Wagh</h4>
+    <div class="stars">★★★★★</div>
+    <span><b>1 month ago</b></span>
+</div>
+
+<div class="testimonial-card">
+    <div class="quote">❝</div>
+    
+    <p>Have recently used KD Tours And Travels service for Pune-Mumbai-Pune travel. It was a pleasant experience. The driver was on time for the pickup and very helpful. 
+        Billing was straight forward. No hidden charges.</p>
+    <h4>Saurabh Joshi</h4>
+    <div class="stars">★★★★★</div>
+    <span><b>1 month ago</b></span>
+</div>
+
+</div>
+
+</section>
+
+<div id="cityContent"></div>
+
+<section class="why-section  city-section">
+
+    <h2>Why Choose KD Tours And Travels?</h2>
+
+    <p class="why-subtext">
+        KD Tours And Travels stands out for its dedication to customer experience. Here’s what sets us apart:
+    </p>
+
+    <ul class="why-list">
+
+        <li>
+            <b>Affordable Rates</b>
+            <p>Travel without stretching your budget, with affordable and transparent pricing with no hidden costs.</p>
+        </li>
+
+        <li>
+            <b>Doorstep Pickup and Drops</b>
+            <p>Enjoy ultimate convenience with cab pickups and drops on your preferred location or airport.</p>
+        </li>
+
+        <li>
+            <b>Wide Range of Vehicles</b>
+            <p>From economy to premium, our fleet has vehicles for every need.</p>
+        </li>
+
+        <li>
+            <b>24/7 Support</b>
+            <p>Dedicated customer support team to assist you anytime during your journey.</p>
+        </li>
+
+        <li>
+            <b>Clean and Well-Maintained Cabs</b>
+            <p>Each cab undergoes regular servicing and thorough sanitization.</p>
+        </li>
+
+        <li>
+            <b>Professional Drivers</b>
+            <p>Travel with peace of mind in the hands of licensed, insured drivers.</p>
+        </li>
+
+        <li>
+            <b>Easy Booking Process</b>
+            <p>Book your cab in minutes on our user-friendly platform.</p>
+        </li>
+
+    </ul>
+
+</section>
+
+<section class="services-section  city-section">
+
+    <h2>Our Premium Cab Services</h2>
+
+    <p class="services-subtext">
+        KD Tours And Travels is proud to offer reliable premium cab services to customers all across Maharashtra. 
+        Whether it’s a short city commute or a long road trip, we have a cab for every travel need:
+    </p>
+
+    <ul class="services-list">
+
+        <li>
+            <b>Airport Pickups & Drops</b>
+            <p>Enjoy quick and convenient Pickups & Drops from airports across Mumbai, Pune, Kolhapur and Nashik.</p>
+        </li>
+
+        <li>
+            <b>One-Way Intercity Drops</b>
+            <p>Enjoy ultimate convenience with One-Way cabs across Maharashtra.</p>
+        </li>
+
+        <li>
+            <b>Out-Station Trips</b>
+            <p>Explore Maharashtra's beautiful destinations with comfortable outstation cab options.</p>
+        </li>
+
+        <li>
+            <b>Cab rental in Mumbai</b>
+            <p>Ideal for road trips or business needs across cities.</p>
+        </li>
+
+        <li>
+            <b>Cab rental in Pune</b>
+            <p>Discover the best way to explore Pune with our cab services.</p>
+        </li>
+
+    </ul>
+
+</section>
+
+<!-- PROCESS SECTION -->
+<section class="process-section  city-section">
+
+    <h2>Our Process</h2>
+
+    <p class="process-subtext">
+        To ensure a hassle-free and enjoyable experience, we follow a streamlined booking process that prioritizes your needs:
+    </p>
+
+    <ol class="process-list">
+
+        <li>
+            <b>Booking and Selection</b>
+            <p>Choose your source and destination, vehicle type options, pickup and drop locations through our website.</p>
+        </li>
+
+        <li>
+            <b>Pickup and Commute</b>
+            <p>Receive pickup at your preferred pick-up location including major Airports.</p>
+        </li>
+
+        <li>
+            <b>On the Road Support</b>
+            <p>Our support team is available around the clock to assist you throughout your commute.</p>
+        </li>
+
+        <li>
+            <b>Drop and Review</b>
+            <p>Flexible drop options to ensure your journey ends as smoothly as it began.</p>
+        </li>
+
+    </ol>
+
+</section>
+
+
+<div id="cityPlaces"></div>
+
+<!-- CONNECT SECTION -->
+<section class="connect-section  city-section">
+
+    <h2>Connect with KD Tours And Travels Today</h2>
+
+    <p>
+        Experience the convenience of premium cab rentals with KD Tours And Travels, trusted by thousands across Maharashtra. 
+        Whether you’re looking for budget-friendly options or premium vehicles, we’re here to help make every journey memorable. 
+        Contact us today or visit our website to book your next ride!
+    </p>
+
+</section>
+
+
+<footer class="footer">
+
+  <div class="footer-top">
+
+    <!-- CITIES -->
+    <div class="footer-col">
+      <h3>Cities</h3>
+
+      <div class="city-list">
+       <p onclick="changeCity('Pune')"><i class="fa-solid fa-car"></i> Premium Cabs in <span>Pune</span></p>
+
+<p onclick="changeCity('Mumbai')"><i class="fa-solid fa-car"></i> Premium Cabs in <span>Mumbai</span></p>
+
+<p onclick="changeCity('Nashik')"><i class="fa-solid fa-car"></i> Premium Cabs in <span>Nashik</span></p>
+
+<p onclick="changeCity('Satara')"><i class="fa-solid fa-car"></i> Premium Cabs in <span>Satara</span></p>
+
+<p onclick="changeCity('Kolhapur')"><i class="fa-solid fa-car"></i> Premium Cabs in <span>Kolhapur</span></p>
+
+<p onclick="changeCity('Mahabaleshwar')"><i class="fa-solid fa-car"></i> Premium Cabs in <span>Mahabaleshwar</span></p>
+
+<p onclick="changeCity('Ratnagiri')"><i class="fa-solid fa-car"></i> Premium Cabs in <span>Ratnagiri</span></p>
+
+<p onclick="changeCity('Shirdi')"><i class="fa-solid fa-car"></i> Premium Cabs in <span>Shirdi</span></p>
+
+<p onclick="changeCity('Chatrapati Sambhajinagar')"><i class="fa-solid fa-car"></i> Premium Cabs in <span>Sambhajinagar</span></p>
+      </div>
+    </div>
+
+
+    <!-- SOCIAL -->
+    <div class="footer-col">
+      <h3>Social</h3>
+
+      <div class="social-icons">
+
+  <a href="mailto:kdtoursandtravals.com" target="_blank">
+    <i class="fa-regular fa-envelope"></i>
+  </a>
+
+  <a href="https://maps.app.goo.gl/JJp3FaSfjZDQsX4g8" target="_blank">
+  <i class="fa-brands fa-google"></i>
+
+  
+</a>
+
+  <a href="https://instagram.com/KD_tours_&_travals" target="_blank">
+    <i class="fa-brands fa-instagram"></i>
+  </a>
+
+
+
+</div>
+    </div>
+
+  </div>
+
+  <!-- LINE -->
+  <hr>
+
+  <!-- COPYRIGHT -->
+  <div class="footer-bottom">
+    © 2025 - All rights reserved by <b>KD Tours And Travels</b> Ltd.
+  </div>
+
+</footer>
+
+<script>
+function toggleDropdown(){
+    let menu = document.getElementById("locationDropdown");
+    menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
+}
+
+function goHome(){
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+window.onclick = function(e){
+    if(
+        !e.target.closest('.nav-links') && 
+        !e.target.closest('.menu-icon')
+    ){
+        document.getElementById("locationDropdown").style.display="none";
+        document.querySelector(".nav-links").classList.remove("show");
+    }
+}
+function setTrip(type){
+let one=document.getElementById("oneWayBtn");
+let round=document.getElementById("roundTripBtn");
+
+if(type==="one"){
+one.classList.add("active");
+round.classList.remove("active");
+}else{
+round.classList.add("active");
+one.classList.remove("active");
+}
+}
+
+function openPopup(){
+document.getElementById("popup").style.display="flex";
+document.getElementById("mainContent").classList.add("blur");
+}
+
+function closePopup(){
+document.getElementById("popup").style.display="none";
+document.getElementById("mainContent").classList.remove("blur");
+}
+
+function callNow(){
+window.location.href="tel:+917057905003";
+}
+
+const locations=["Pune","Mumbai","Nashik","Satara","Kolhapur","Goa","Shirdi"];
+
+function showSuggestions(type){
+let input=document.getElementById(type);
+let box=document.getElementById(type+"List");
+let value=input.value.toLowerCase();
+box.innerHTML="";
+
+if(value===""){box.style.display="none";return;}
+
+locations.forEach(loc=>{
+if(loc.toLowerCase().includes(value)){
+let div=document.createElement("div");
+div.innerHTML=loc;
+div.onclick=function(){
+input.value=loc;
+box.style.display="none";
+}
+box.appendChild(div);
+}
+});
+box.style.display="block";
+}
+
+function setTrip(type){
+let one=document.getElementById("oneWayBtn");
+let round=document.getElementById("roundTripBtn");
+
+if(type==="one"){
+one.classList.add("active");
+round.classList.remove("active");
+}else{
+round.classList.add("active");
+one.classList.remove("active");
+}
+}
+
+function openPopup(){
+document.getElementById("popup").style.display="flex";
+document.getElementById("mainContent").classList.add("blur");
+}
+
+function closePopup(){
+document.getElementById("popup").style.display="none";
+document.getElementById("mainContent").classList.remove("blur");
+}
+
+function callNow(){
+window.location.href="tel:+917057905003";
+}
+
+function toggleMenu(){
+    document.querySelector(".nav-links").classList.toggle("show");
+}
+
+
+
+function changeCity(city){
+
+    
+let sections = document.querySelectorAll(".city-section");
+sections.forEach(sec => sec.style.display = "none");   // 🔥 hide all
+
+document.getElementById("mainContent").classList.remove("blur");
+
+let title = document.getElementById("title");
+let desc = document.getElementById("desc");
+let hero = document.getElementById("hero");
+
+renderPlaces(city);
+
+/* 👉 PUNE (SPECIAL TEXT) */
+if(city === "Pune"){
+
+title.innerText = "Rent a Cab in Pune with KD Tours And Travels";
+
+desc.innerText = "KD Tours And Travels is your Trusted Cab Service for Seamless Journeys! Book Now and Experience Smooth & Reliable Transportation at Your Fingertips. At KD Tours And Travels, we allow you to enjoy flexibility with respect to start and endpoints. You can book cars for one-way drops, outstation round-trips and local transfers. Moreover, we provide door-step pickup and drop, believe in complete transparency, and adhere strictly to business ethics.";
+
+hero.style.background =
+"linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1606298855672-3efb63017be8?q=80&w=1920') center/cover no-repeat";
+
+}
+
+/* 👉 MUMBAI */
+else if(city === "Mumbai"){
+
+title.innerText = "Rent a Cab in Mumbai with KD Tours And Travels";
+desc.innerText = "KD Tours And Travels is your Trusted Cab Service for Seamless Journeys! Book Now and Experience Smooth & Reliable Transportation at Your Fingertips. At KD Tours And Travels, we allow you to enjoy flexibility with respect to start and endpoints. You can book cars for one-way drops, outstation round-trips and local transfers. Moreover, we provide door-step pickup and drop, believe in complete transparency, and adhere strictly to business ethics.";
+
+hero.style.background =
+"linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1570168007204-dfb528c6958f?q=80&w=1920') center/cover no-repeat";
+}
+
+/* 👉 NASHIK */
+else if(city === "Nashik"){
+
+title.innerText = "Rent a Cab in Nashik with KD Tours And Travels";
+desc.innerText = "KD Tours And Travels is your Trusted Cab Service for Seamless Journeys! Book Now and Experience Smooth & Reliable Transportation at Your Fingertips. At KD Tours And Travels, we allow you to enjoy flexibility with respect to start and endpoints. You can book cars for one-way drops, outstation round-trips and local transfers. Moreover, we provide door-step pickup and drop, believe in complete transparency, and adhere strictly to business ethics.";
+
+hero.style.background =
+"linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1603262110263-fb0112e7cc33?q=80&w=1920') center/cover no-repeat";
+}
+
+/* 👉 SATARA */
+else if(city === "Satara"){
+
+title.innerText = "Rent a Cab in Satara with KD Tours And Travels";
+desc.innerText = "KD Tours And Travels is your Trusted Cab Service for Seamless Journeys! Book Now and Experience Smooth & Reliable Transportation at Your Fingertips. At KD Tours And Travels, we allow you to enjoy flexibility with respect to start and endpoints. You can book cars for one-way drops, outstation round-trips and local transfers. Moreover, we provide door-step pickup and drop, believe in complete transparency, and adhere strictly to business ethics.";
+
+hero.style.background =
+"linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1592210454359-9043f067919b?q=80&w=1920') center/cover no-repeat";
+}
+
+/* 👉 KOLHAPUR */
+else if(city === "Kolhapur"){
+
+title.innerText = "Rent a Cab in Kolhapur with KD Tours And Travels";
+desc.innerText = "KD Tours And Travels is your Trusted Cab Service for Seamless Journeys! Book Now and Experience Smooth & Reliable Transportation at Your Fingertips. At KD Tours And Travels, we allow you to enjoy flexibility with respect to start and endpoints. You can book cars for one-way drops, outstation round-trips and local transfers. Moreover, we provide door-step pickup and drop, believe in complete transparency, and adhere strictly to business ethics.";
+
+hero.style.background =
+"linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1920') center/cover no-repeat";
+}
+
+/* 👉 Mahabaleshwar */
+else if(city === "Mahabaleshwar"){
+
+title.innerText = "Rent a Cab in Mahabaleshwar with KD Tours And Travels";
+desc.innerText = "KD Tours And Travels is your Trusted Cab Service for Seamless Journeys! Book Now and Experience Smooth & Reliable Transportation at Your Fingertips. At KD Tours And Travels, we allow you to enjoy flexibility with respect to start and endpoints. You can book cars for one-way drops, outstation round-trips and local transfers. Moreover, we provide door-step pickup and drop, believe in complete transparency, and adhere strictly to business ethics.";
+
+hero.style.background =
+"linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?q=80&w=1920') center/cover no-repeat";
+}
+
+
+/* 👉 Ratnagiri */
+else if(city === "Ratnagiri"){
+
+title.innerText = "Rent a Cab in Ratnagiri with KD Tours And Travels";
+desc.innerText = "KD Tours And Travels is your Trusted Cab Service for Seamless Journeys! Book Now and Experience Smooth & Reliable Transportation at Your Fingertips. At KD Tours And Travels, we allow you to enjoy flexibility with respect to start and endpoints. You can book cars for one-way drops, outstation round-trips and local transfers. Moreover, we provide door-step pickup and drop, believe in complete transparency, and adhere strictly to business ethics.";
+hero.style.background =
+"linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1920') center/cover no-repeat";
+}
+
+/* 👉 Shirdi */
+else if(city === "Shirdi"){
+
+title.innerText = "Rent a Cab in Shirdi with KD Tours And Travels";
+desc.innerText = "KD Tours And Travels is your Trusted Cab Service for Seamless Journeys! Book Now and Experience Smooth & Reliable Transportation at Your Fingertips. At KD Tours And Travels, we allow you to enjoy flexibility with respect to start and endpoints. You can book cars for one-way drops, outstation round-trips and local transfers. Moreover, we provide door-step pickup and drop, believe in complete transparency, and adhere strictly to business ethics.";
+hero.style.background =
+"linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=1920') center/cover no-repeat";
+}
+
+/* 👉 Chatrapati Sambhajinagar */
+else if(city === "Chatrapati Sambhajinagar"){
+
+title.innerText = "Rent a Cab in Chatrapati Sambhajinagar with KD Tours And Travels";
+desc.innerText = "KD Tours And Travels is your Trusted Cab Service for Seamless Journeys! Book Now and Experience Smooth & Reliable Transportation at Your Fingertips. At KD Tours And Travels, we allow you to enjoy flexibility with respect to start and endpoints. You can book cars for one-way drops, outstation round-trips and local transfers. Moreover, we provide door-step pickup and drop, believe in complete transparency, and adhere strictly to business ethics.";
+hero.style.background =
+"linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=1920') center/cover no-repeat";
+}
+
+
+/* 👉 बाकी cities */
+else{
+
+title.innerText = "Rent a Cab in " + city + " with KD Tours And Travels";
+desc.innerText = "Best cab service available in " + city + " with safe and reliable rides.";
+
+}
+
+
+/* 🔥 ADD THIS AT END (delete नको काहीच) */
+
+let container = document.getElementById("cityContent");
+
+const cityData = {
+
+"Pune": `
+<div class="city-content">
+
+<h2>Discover Pune with  KD Tours And Travels</h2>
+
+<div class="city-text">
+
+<p>Pune, the cultural capital of Maharashtra, is a city that beautifully blends history, modernity, and nature. Whether you’re a tourist eager to explore or a local looking for a stress-free getaway, KD Tours And Travels offers the perfect cab rental service to make your journey comfortable, enjoyable, and utterly convenient.</p>
+
+<p>Imagine starting your day with a visit to the iconic Shaniwar Wada, where history whispers through ancient walls. Head over to the lush Aga Khan Palace, a symbol of India’s freedom struggle, and admire its serene gardens. For a dose of spirituality, visit the magnificent Dagdusheth Halwai Ganpati Temple.</p>
+
+<p>If you’re a nature enthusiast, KD Tours And Travels can take you to the tranquil Pashan Lake or the scenic Vetal Tekdi. Looking for adventure? Visit Sinhagad Fort for breathtaking views.</p>
+
+<p>Planning a day trip outside Pune? Discover Lonavala, Khandala, Karla Caves, Bhaja Caves and Pawna Lake with ease and comfort.</p>
+
+<p>Our clean cabs and professional drivers ensure a safe and comfortable journey every time.</p>
+
+<p>Experience seamless travel with KD Tours And Travels – your trusted partner for exploring Pune.</p>
+
+</div>
+
+</div>
+`,
+
+
+"Mumbai": `
+<div class="city-content">
+
+<h2>Discover Mumbai with  KD Tours And Travels</h2>
+
+<div class="city-text">
+
+<p>Mumbai, the financial capital of India, is a city that never sleeps. From iconic landmarks to bustling streets and serene coastal views, Mumbai offers an unforgettable experience for every traveler. With KD Tours And Travels, your journey becomes smooth, safe, and comfortable.</p>
+
+<p>Begin your exploration with the iconic Gateway of India and enjoy the stunning view of the Arabian Sea. Visit Marine Drive, also known as the Queen’s Necklace, for a peaceful evening walk along the coastline.</p>
+
+<p>Explore the historical beauty of Chhatrapati Shivaji Maharaj Terminus and the architectural marvel of the Taj Mahal Palace Hotel.</p>
+
+<p>For spiritual moments, visit Siddhivinayak Temple and Haji Ali Dargah, two of the most famous religious places in Mumbai.</p>
+
+<p>Nature lovers can enjoy Sanjay Gandhi National Park, Juhu Beach, and Versova Beach for relaxing experiences inside the busy city.</p>
+
+<p>Whether it’s business travel or leisure, KD Tours And Travels ensures clean cars, professional drivers, and timely service for a hassle-free journey.</p>
+
+<p>Experience Mumbai like never before with KD Tours And Travels – your trusted travel partner in the city of dreams.</p>
+
+</div>
+
+</div>
+`,
+
+
+"Nashik": `
+<div class="city-content">
+
+<h2>Discover Nashik with  KD Tours And Travels</h2>
+
+<div class="city-text">
+
+<p>Nashik, the Wine Capital of India, is a city rich in spirituality, history, and natural beauty. Known for its ancient temples, scenic vineyards, and peaceful surroundings, Nashik offers a perfect blend of culture and relaxation. With KD Tours And Travels, your journey becomes smooth, safe, and comfortable.</p>
+
+<p>Begin your spiritual journey at Trimbakeshwar Temple, one of the 12 Jyotirlingas. Visit Kalaram Temple and explore the holy area of Panchavati, deeply connected with Ramayana history.</p>
+
+<p>Explore the ancient Pandavleni Caves, known for rock-cut architecture and panoramic views of Nashik city.</p>
+
+<p>Wine lovers can enjoy Sula Vineyards, where you can experience wine tasting and beautiful vineyard landscapes.</p>
+
+<p>Nature enthusiasts can visit Anjneri Hills, Someshwar Waterfalls, and Dugarwadi Waterfalls for peaceful escapes.</p>
+
+<p>For adventure, explore Bhandardara, Arthur Lake, Randha Falls, and Brahmagiri Hills, perfect for trekking and scenic views.</p>
+
+<p>KD Tours And Travels ensures safe, comfortable, and hassle-free travel across Nashik with professional drivers and clean vehicles.</p>
+
+<p>Experience Nashik like never before with KD Tours And Travels – your trusted travel partner for spiritual, cultural, and nature journeys.</p>
+
+</div>
+
+</div>
+`,
+
+
+"Satara": `
+<div class="city-content">
+
+<h2>Discover Satara with  KD Tours And Travels</h2>
+
+<div class="city-text">
+
+<p>Nestled in the scenic Western Ghats, Satara is a beautiful blend of history, nature, and culture. Known for its peaceful landscapes and heritage forts, Satara is perfect for both adventure lovers and peace seekers. With KD Tours And Travels, you can explore everything comfortably and stress-free.</p>
+
+<p>Start your journey at Ajinkyatara Fort, offering panoramic views of the city and rich Maratha history.</p>
+
+<p>Visit the world-famous Kaas Plateau (Valley of Flowers), a UNESCO site known for its seasonal bloom of wildflowers.</p>
+
+<p>Enjoy the natural beauty of Thoseghar Waterfalls, a perfect picnic and photography spot surrounded by greenery.</p>
+
+<p>Explore Sajjangad Fort, a spiritual pilgrimage site associated with Samarth Ramdas.</p>
+
+<p>Adventure lovers can visit Vasota Fort and experience trekking through dense forests and scenic trails.</p>
+
+<p>Nearby attractions like Koyna Dam, Panchgani, and Mahabaleshwar offer breathtaking views, strawberry farms, and hill station vibes.</p>
+
+<p>KD Tours And Travels ensures safe, comfortable, and hassle-free travel with professional drivers and clean vehicles.</p>
+
+<p>Experience Satara like never before with KD Tours And Travels – your trusted travel partner for unforgettable journeys.</p>
+
+</div>
+
+</div>
+`,
+
+
+"Kolhapur": `
+<div class="city-content">
+
+<h2>Discover Kolhapur with  KD Tours And Travels</h2>
+
+<div class="city-text">
+
+<p>Kolhapur is a city rich in history, culture, and spirituality. Known for its royal heritage and famous temples, it is one of Maharashtra’s most vibrant destinations. With KD Tours And Travels, you can explore Kolhapur comfortably and stress-free.</p>
+
+<p>Begin your journey at the famous Mahalakshmi Temple (Ambabai Temple), a sacred and powerful spiritual center.</p>
+
+<p>Explore the grand New Palace Museum, which showcases royal artifacts and the legacy of Kolhapur’s kings.</p>
+
+<p>Relax at Rankala Lake, a peaceful spot perfect for sunsets, boating, and evening walks.</p>
+
+<p>Visit Jyotiba Temple, located on a hilltop with beautiful views and spiritual significance.</p>
+
+<p>Nature lovers can enjoy Panhala Fort, offering breathtaking Sahyadri views and Maratha history.</p>
+
+<p>For wildlife adventure, explore Radhanagari Wildlife Sanctuary and Dajipur Bison Sanctuary.</p>
+
+<p>Don’t miss nearby attractions like Gaganbawda Hill Station and Khidrapur Temple with its ancient carvings.</p>
+
+<p>Food lovers can enjoy famous Kolhapuri Misal, Tambada Rassa, Pandhara Rassa, and authentic local flavors.</p>
+
+<p>KD Tours And Travels ensures safe, comfortable, and reliable travel with experienced drivers and clean vehicles.</p>
+
+<p>Explore Kolhapur at your own pace with KD Tours And Travels – your trusted travel partner for memorable journeys.</p>
+
+</div>
+
+</div>
+`,
+
+"Mahabaleshwar": `
+<div class="city-content">
+
+<h2>Discover Mahabaleshwar with KD Tours And Travels</h2>
+
+<div class="city-text">
+
+<p>Mahabaleshwar is a beautiful hill station nestled in the Western Ghats, known for its lush greenery, misty valleys, and strawberry farms. It is one of the most peaceful and scenic destinations in Maharashtra. With KD Tours And Travels, you can explore it comfortably and stress-free.</p>
+
+<p>Start your journey at Arthur’s Seat, known as the "Queen of Points," offering breathtaking valley views.</p>
+
+<p>Visit Elephant’s Head Point, famous for its natural rock formation and panoramic scenery.</p>
+
+<p>Enjoy boating and relaxing at Venna Lake, a perfect spot for families and couples.</p>
+
+<p>Explore the historic Pratapgad Fort, a symbol of Maratha bravery and rich history.</p>
+
+<p>Experience nature at Lingmala Waterfall, especially beautiful during monsoon season.</p>
+
+<p>Visit Mapro Garden, famous for strawberry products, fresh food, and beautiful surroundings.</p>
+
+<p>Witness sunrise from Wilson Point, the highest point in Mahabaleshwar.</p>
+
+<p>Enjoy scenic views of Krishna Valley and Dhom Dam from Kate’s Point.</p>
+
+<p>Take a short trip to Panchgani, known for Table Land, paragliding, and peaceful landscapes.</p>
+
+<p>KD Tours And Travels ensures safe, comfortable, and reliable travel with experienced drivers and clean vehicles.</p>
+
+<p>Explore Mahabaleshwar at your own pace with KD Tours And Travels – your trusted travel partner for unforgettable journeys.</p>
+
+</div>
+
+</div>
+`,
+
+"Ratnagiri": `
+<div class="city-content">
+
+<h2>Discover Ratnagiri with KD Tours And Travels</h2>
+
+<div class="city-text">
+
+<p>Ratnagiri is a beautiful coastal city in Maharashtra known for its clean beaches, historic forts, temples, and peaceful natural beauty. With KD Tours And Travels, you can explore this coastal paradise comfortably and stress-free.</p>
+
+<p>Enjoy the comfort of air-conditioned rides with professional drivers who handle all routes and navigation, so you can simply relax and enjoy your journey.</p>
+
+<p>Start your trip at Ganpatipule Beach, famous for its white sand and the sacred Ganapati Temple located near the sea.</p>
+
+<p>Visit Ratnagiri Fort, offering stunning views of the Arabian Sea and surrounding coastline.</p>
+
+<p>Explore Jaigad Fort, a historic fort known for its scenic cliff-side views and peaceful environment.</p>
+
+<p>Discover Thibaw Palace, a beautiful heritage structure once home to the exiled King of Burma.</p>
+
+<p>Relax at Mandavi Beach, a calm and less crowded beach perfect for sunset views and peaceful walks.</p>
+
+<p>Visit Swayambhu Ganapati Temple at Kunkeshwar, a spiritual destination located along the coastline.</p>
+
+<p>Take a peaceful trip to Velneshwar Beach, known for its clean shores and Shiva temple.</p>
+
+<p>Enjoy the untouched beauty of Aare-Ware Beach, one of the most scenic and quiet beaches near Ratnagiri.</p>
+
+<p>KD Tours And Travels ensures safe, reliable, and comfortable travel with flexible itineraries tailored to your needs.</p>
+
+<p>Explore Ratnagiri at your own pace with KD Tours And Travels – your trusted travel partner for coastal journeys.</p>
+
+</div>
+
+</div>
+`,
+
+
+"Shirdi": `
+<div class="city-content">
+
+<h2>Discover Shirdi with KD Tours And Travels</h2>
+
+<div class="city-text">
+
+<p>Shirdi is one of the most important spiritual destinations in Maharashtra, known worldwide as the home of Sai Baba. Every year millions of devotees visit this sacred town for peace, devotion, and blessings. With KD Tours And Travels, your journey becomes smooth, comfortable, and stress-free.</p>
+
+<p>Travel comfortably in air-conditioned vehicles with experienced drivers who ensure safe and hassle-free transportation throughout your trip.</p>
+
+<p>Begin your spiritual journey at the famous Samadhi Mandir of Sai Baba, the main attraction and heart of Shirdi.</p>
+
+<p>Visit Dwarkamai Mosque, where Sai Baba spent most of his life and performed many miracles.</p>
+
+<p>Explore Chavadi, another sacred place where Sai Baba used to rest on alternate nights.</p>
+
+<p>Spend time at Gurusthan, the place where Sai Baba was first seen meditating as a young saint.</p>
+
+<p>Visit Khandoba Temple, a historically significant site associated with Sai Baba’s arrival in Shirdi.</p>
+
+<p>Enjoy Sai Teerth Theme Park, which beautifully presents Sai Baba’s teachings through modern attractions and experiences.</p>
+
+<p>All major temples and attractions are easily accessible with KD Tours And Travels, ensuring a smooth travel experience without stress or delays.</p>
+
+<p>KD Tours And Travels guarantees safe, reliable, and comfortable journeys with flexible travel options for pilgrims and families.</p>
+
+<p>Experience Shirdi’s spiritual energy at your own pace with KD Tours And Travels – your trusted travel partner for peaceful journeys.</p>
+
+</div>
+
+</div>
+`,
+
+
+"Chatrapati Sambhajinagar": `
+<div class="city-content">
+
+<h2>Discover Chatrapati Sambhajinagar with KD Tours And Travels</h2>
+
+<div class="city-text">
+
+<p>Chatrapati Sambhajinagar (Aurangabad) is a historic city known for its rich culture, ancient caves, majestic forts, and architectural wonders. It is one of Maharashtra’s most important heritage destinations. With KD Tours And Travels, your journey becomes comfortable, safe, and hassle-free.</p>
+
+<p>Travel in clean, air-conditioned vehicles with professional drivers who ensure smooth navigation and stress-free sightseeing.</p>
+
+<p>Start your journey at Bibi Ka Maqbara, often called the “Taj of the Deccan,” a beautiful marble monument with stunning Mughal architecture.</p>
+
+<p>Explore the world-famous Ellora Caves, a UNESCO World Heritage Site featuring Hindu, Buddhist, and Jain rock-cut temples.</p>
+
+<p>Visit Daulatabad Fort, a powerful hilltop fortress known for its strong defense structure and panoramic views.</p>
+
+<p>Seek blessings at Grishneshwar Temple, one of the 12 Jyotirlingas of Lord Shiva located near Ellora.</p>
+
+<p>Take a memorable trip to Ajanta Caves, famous for ancient Buddhist paintings and sculptures that reflect India’s rich heritage.</p>
+
+<p>KD Tours And Travels ensures smooth travel between all major attractions with flexible itinerary options.</p>
+
+<p>Enjoy a stress-free journey without worrying about routes, parking, or public transport delays.</p>
+
+<p>Explore Chatrapati Sambhajinagar at your own pace with KD Tours And Travels – your trusted travel partner for heritage journeys.</p>
+
+</div>
+
+</div>
+`,
+
+};
+
+/* content show */
+
+if(cityData[city]){
+    container.innerHTML = `
+        <section class="city-page">
+            <div class="city-wrapper">
+                ${cityData[city]}
+            </div>
+        </section>
+    `;
+}
+else{
+container.innerHTML = "";
+}
+
+
+/* 👉 scroll top */
+window.scrollTo({ top: 0, behavior: "smooth" });
+
+}
+
+
+let Places = document.getElementById("cityPlaces");
+
+function renderPlaces(city){
+
+    if(cityPlacesData[city]){
+
+        let cards = "";
+
+        cityPlacesData[city].forEach(place=>{
+            cards += `
+            <div class="city-card">
+                <h3>${place.title}</h3>
+                <p>${place.desc}</p>
+            </div>`;
+        });
+
+        places.innerHTML = `
+        <div class="city-places">
+            <h1><i>Places to visit in ${city} with Premium Rental Cabs<i></h1>
+            <div class="city-grid">
+                ${cards}
+            </div>
+        </div>`;
+    }
+    else{
+        places.innerHTML = "";
+    }
+}
+
+
+
+function goHome(){
+
+// 🔥 1. City sections परत show
+let sections = document.querySelectorAll(".city-section");
+sections.forEach(sec => {
+    sec.style.display = "";
+});
+
+// 🔥 2. Dynamic content clear
+document.getElementById("cityContent").innerHTML = "";
+document.getElementById("cityPlaces").innerHTML = "";
+
+// 🔥 3. HERO text reset (IMPORTANT)
+document.getElementById("title").innerText =
+"Book a Cab from the Best Cab service - KD Tours And Travels";
+
+document.getElementById("desc").innerText =
+"KD Tours And Travels is your Trusted Cab Service for Seamless Journeys! Book Now and Experience Smooth & Reliable Transportation at Your Fingertips. At KD Tours And Travels, we allow you to enjoy flexibility with respect to start and endpoints. You can book cars for one-way drops, outstation round-trips and local transfers. Moreover, we provide door-step pickup and drop, believe in complete transparency, and adhere strictly to business ethics.";
+
+// 🔥 4. HERO image reset
+document.getElementById("hero").style.background =
+"linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80') no-repeat center/cover";
+
+// 🔥 5. Scroll top
+window.scrollTo({ top: 0, behavior: "smooth" });
+
+}
+
+let places = document.getElementById("cityPlaces");
+
+const cityPlacesData = {
+    "Pune": [
+        {title:"Shaniwar Wada", desc:"Step into history at Shaniwar Wada, where every corner tells a tale of Maratha glory."},
+        {title:"Dagdusheth Temple", desc:"Seek blessings at Dagdusheth Temple, a true symbol of Pune's spirituality."},
+        {title:"Aga Khan Palace", desc:"Discover the elegance of Aga Khan Palace, a serene blend of history and heritage."},
+        {title:"Pashan Lake",desc:"Escape to the tranquility of Pashan Lake, a haven for nature lovers."},
+        {title:"Vetal Tekdi",desc:"Climb Vetal Tekdi and soak in panoramic views of Pune's natural beauty."},
+        {title:"Sinhagad Fort",desc:"Conquer the heights of Sinhagad Fort and relive the bravery of the Marathas."},
+        {title:"Lonavala & Khandala",desc:"Experience the misty charm of Lonavala and Khandala, Pune’s favorite hill stations."},
+        {title:"Karla and Bhaja Caves",desc:"Unearth ancient Buddhist marvels at Karla and Bhaja Caves."},
+        {title:"Pawna Lake",desc:"Unwind by the serene waters of Pawna Lake, a perfect weekend retreat."}        
+    ],
+
+    "Mumbai": [
+        {title:"Gateway of India", desc:"Step into Mumbai's grandeur at the iconic Gateway of India, where history meets the sea."},
+        {title:"Marine Drive", desc:"Feel the heartbeat of Mumbai at Marine Drive, the shimmering Queen's Necklace."},
+        {title:"Juhu Beach", desc:"Savor sunsets and street food at Juhu Beach, Mumbai's vibrant seaside retreat."},
+        {title:"Elephanta Caves",desc:"Explore ancient tales carved in stone at the mystical Elephanta Caves."},
+        {title:"Chhatrapati Shivaji Terminus (CST)",desc:"Marvel at the architectural splendor of CST, a UNESCO World Heritage gem."},
+        {title:"Colaba Causeway",desc:"Indulge in shopping and street vibes at Colaba Causeway, Mumbai's bustling bazaar."},
+        {title:"Bandra-Worli Sea Link",desc:"Glide through the skies over the sea on the iconic Bandra-Worli Sea Link."},
+        {title:"Siddhivinayak Temple",desc:"Seek divine blessings at Siddhivinayak, Mumbai's revered spiritual sanctuary."},
+        {title:"Sanjay Gandhi National Park",desc:"Escape into the wilderness at Sanjay Gandhi National Park, a green haven in the city."}
+    ],
+
+    "Nashik": [
+        {title:"Trimbakeshwar", desc:"JSeek divine blessings at Trimbakeshwar, one of India’s sacred Jyotirlingas."},
+        {title:"Sula Vineyards", desc:"Marvel at the historical beauty of Kalaram Temple, a spiritual and architectural gem."},
+        {title:"Pandavleni Caves", desc:"Step into mythology at Panchavati, a site steeped in Ramayana legends."},
+        {title:"Pandavleni Caves",desc:"Explore history and breathtaking views at the ancient Pandavleni Caves."},
+        {title:"Sula Vineyards",desc:"Savor fine wines and scenic landscapes at the famous Sula Vineyards."},
+        {title:"Anjneri Hills",desc:"Trek to Anjneri Hills, believed to be the birthplace of Lord Hanuman."},
+        {title:"Someshwar Waterfalls",desc:"Relax by the tranquil Someshwar Waterfalls, a perfect spot for picnics."},
+        {title:"Dugarwadi Waterfalls",desc:"Discover the serene beauty of Dugarwadi Waterfalls, an offbeat escape."},
+        {title:"Bhandardara",desc:"Experience nature at Bhandardara, home to Arthur Lake and Randha Falls."}
+    ],
+
+    "Satara":[
+        {title:"Ajinkyatara Fort",desc:"Stand tall with history at Ajinkyatara Fort, offering panoramic views of Satara."},
+        {title:"Kaas Plateau",desc:"Witness nature's masterpiece at Kaas Plateau, the Valley of Flowers."},
+        {title:"Thoseghar Waterfalls",desc:"Feel the power of nature at the breathtaking Thoseghar Waterfalls."},
+        {title:"Sajjangad Fort",desc:"Find spiritual solace at Sajjangad, the abode of Samarth Ramdas."},
+        {title:"Chalkewadi Windmill Farm",desc:"Experience serenity amid the windswept beauty of Chalkewadi."},
+        {title:"Vasota Fort",desc:"Embark on an adventurous trek to the majestic Vasota Fort."},
+        {title:"Koyna Dam Backwaters",desc:"Relax by the tranquil backwaters of the mighty Koyna Dam."},
+        {title:"Panchgani",desc:"Breathe in the charm of Panchgani, a hill station with strawberries and scenic views."},
+        {title:"Mahabaleshwar",desc:"Indulge in the lush beauty and fresh produce of Mahabaleshwar."}
+    ],
+
+    "Kolhapur":[
+        {title:"Mahalakshmi Temple",desc:"Seek divine blessings at the revered Mahalakshmi Temple, a marvel of spirituality and architecture."},
+        {title:"New Palace Museum",desc:"Step into royal history at the New Palace Museum, showcasing Kolhapur's princely heritage."},
+        {title:"Rankala Lake",desc:"Relax by the serene waters of Rankala Lake, perfect for a peaceful boat ride and sunset views."},
+        {title:"Panhala Fort",desc:"Explore Maratha history and enjoy breathtaking Sahyadri views at Panhala Fort."},
+        {title:"Jyotiba Temple",desc:"Experience spiritual tranquility and panoramic hilltop views at Jyotiba Temple."},
+        {title:"Radhanagari Wildlife Sanctuary",desc:"Discover diverse flora and fauna at Radhanagari Wildlife Sanctuary, a nature lover’s paradise."},
+        {title:"Gaganbawda",desc:"Escape to the scenic beauty of Gaganbawda, a perfect spot for trekking and photography."},
+        {title:"Dajipur Wildlife Sanctuary",desc:"Spot the majestic Indian bison at the offbeat Dajipur Wildlife Sanctuary."},
+        {title:"Khidrapur Temple",desc:"Marvel at the intricate carvings and ancient charm of the Khidrapur Temple."}
+    ],
+
+    "Mahabaleshwar":[
+        {title:"Venna Lake",desc:"Enjoy a serene boat ride amidst the lush green landscapes of Venna Lake in Mahabaleshwar."},
+        {title:"Wilson Point",desc:"Catch a breathtaking sunrise from Wilson Point, the highest point in Mahabaleshwar."},
+        {title:"Elephant's Head Point",desc:"Admire stunning views of the Sahyadri hills from Elephant's Head Point."},
+        {title:"Pratapgad Fort",desc:"Step into history with a visit to the majestic Pratapgad Fort, known for its rich Maratha heritage."},
+        {title:"Mapro Garden",desc:"Indulge in fresh strawberry treats and explore the beautiful Mapro Garden."},
+        {title:"Arthur's Seat",desc:"Witness the picturesque beauty of the surrounding valleys and rivers from Arthur's Seat."},
+        {title:"Lingmala Waterfall",desc:"Feel the cool mist of the Lingmala Waterfall as it cascades down the rocky cliffs."},
+        {title:"Bhilar Waterfalls",desc:"Escape into nature’s tranquility with a visit to the stunning Bhilar Waterfalls."},
+        {title:"Tiger's Spring",desc:"Marvel at the natural beauty and crystal-clear waters at the tranquil Tiger's Spring."}
+    ],
+
+    "Ratnagiri ":[
+        {title:"Ganpatipule Beach",desc:"A serene, golden-sand beach with a peaceful ambiance, perfect for relaxation and spiritual reflection at the nearby Ganapati Temple."},
+        {title:"Wilson Point",desc:"Catch a breathtaking sunrise from Wilson Point, the highest point in Mahabaleshwar."},
+        {title:"Elephant's Head Point",desc:"Admire stunning views of the Sahyadri hills from Elephant's Head Point."},
+        {title:"Pratapgad Fort",desc:"Step into history with a visit to the majestic Pratapgad Fort, known for its rich Maratha heritage."},
+        {title:"Mapro Garden",desc:"Indulge in fresh strawberry treats and explore the beautiful Mapro Garden."},
+        {title:"Arthur's Seat",desc:"Witness the picturesque beauty of the surrounding valleys and rivers from Arthur's Seat."},
+        {title:"Lingmala Waterfall",desc:"Feel the cool mist of the Lingmala Waterfall as it cascades down the rocky cliffs."},
+        {title:"Bhilar Waterfalls",desc:"Escape into nature’s tranquility with a visit to the stunning Bhilar Waterfalls."},
+        {title:"Tiger's Spring",desc:"Marvel at the natural beauty and crystal-clear waters at the tranquil Tiger's Spring."}
+    ],
+
+    "Shirdi":[
+        {title:"Samadhi Mandir",desc:"The spiritual heart of Shirdi, where Sai Baba's mortal remains rest, attracting millions of devotees each year."},
+        {title:"Dwarkamai",desc:"Sai Baba's mosque, a place of immense spiritual significance, known for the sacred fire that has been burning continuously."},
+        {title:"Chavadi",desc:"The place where Sai Baba rested every alternate night, now a revered site for followers seeking blessings."},
+        {title:"Sai Teerth Theme Park",desc:"A unique spiritual theme park that brings to life the teachings of Sai Baba through immersive experiences and attractions."},
+        {title:"Khandoba Temple",desc:"A historic temple dedicated to Lord Khandoba, where Sai Baba is believed to have first appeared to his devotees."},
+        {title:"Gurusthan",desc:"A tranquil spot where Sai Baba is believed to have meditated in his early years, now an important place for spiritual reflection."},
+        {title:"Shirdi Sai Baba Sansthan Temple Complex",desc:"A vast temple complex offering various services to devotees, including the divine darshan of Sai Baba and spiritual amenities."},
+        {title:"Lendi Baug",desc:"A peaceful garden where Sai Baba often took walks and meditated, now home to a small temple dedicated to him."},
+        {title:"Shri Sai Baba Museum",desc:"A museum showcasing relics, photographs, and personal items of Sai Baba, offering a deeper insight into his life and teachings."}
+    ],
+
+    "Chatrapati Sambhajinagar":[
+        {title:"Kadam Dev Temple",desc:"An ancient temple dedicated to Lord Kadam Dev, known for its serene atmosphere and spiritual significance in Sambhajinagar."},
+        {title:"Sambhaji Maharaj Garden",desc:"A beautiful park dedicated to the warrior king Sambhaji Maharaj, featuring lush greenery, well-maintained gardens, and peaceful walking paths."},
+        {title:"Aurangabad Caves",desc:"A group of ancient rock-cut Buddhist caves, rich in history and intricate carvings, offering a glimpse into ancient religious architecture."},
+        {title:"Bibi Ka Maqbara",desc:"A stunning white marble mausoleum resembling the Taj Mahal, built in memory of Aurangzeb’s wife, offering breathtaking architecture and gardens."},
+        {title:"Ellora Caves",desc:"A UNESCO World Heritage site, the Ellora Caves are a complex of ancient rock-cut temples, monasteries, and sculptures, representing Hindu, Buddhist, and Jain traditions."},
+        {title:"Daulatabad Fort",desc:"An impressive 14th-century hilltop fort with strategic architecture, offering panoramic views of the surrounding region and rich historical insights."},
+        {title:"Grishneshwar Temple",desc:"A sacred Jyotirlinga temple dedicated to Lord Shiva, located near Ellora, known for its spiritual importance and beautiful temple architecture."},
+        {title:"Panchakki",desc:"An ancient water mill used for grinding grains, showcasing sophisticated engineering, and a peaceful place to explore historical ingenuity."},
+        {title:"Ajanta Caves",desc:"A world-famous site of ancient Buddhist rock-cut caves, known for their stunning murals and sculptures that narrate the stories of Buddha's life."}
+    ],
+};
+
+if(cityPlacesData[city]){
+
+    let cards = "";
+
+    cityPlacesData[city].forEach(place=>{
+        cards += `
+        <div class="city-card">
+            <h3>${place.title}</h3>
+            <p>${place.desc}</p>
+        </div>`;
+    });
+
+    places.innerHTML = `
+    <div class="city-places">
+        <h2>Places to visit in ${city} </h2>
+        <div class="city-grid">
+            ${cards}
+        </div>
+    </div>`;
+}
+else{
+    places.innerHTML = "";
+}
+
+
+function openContact(){
+
+// 🔥 main content hide (hero + all sections)
+let sections = document.querySelectorAll(".city-section");
+sections.forEach(sec => sec.style.display = "none");
+
+// 🔥 hero पण hide
+document.getElementById("hero").style.display = "none";
+
+// 🔥 dynamic content clear
+document.getElementById("cityContent").innerHTML = "";
+document.getElementById("cityPlaces").innerHTML = "";
+
+// 🔥 contact show
+document.getElementById("contactSection").style.display = "block";
+
+// 🔥 scroll top
+window.scrollTo({ top: 0, behavior: "smooth" });
+
+}
+function openContactPopup(){
+    document.getElementById("contactPopup").style.display = "flex";
+    document.getElementById("mainContent").classList.add("blur");   // 🔥 ADD THIS
+}
+
+function closeContactPopup(){
+    document.getElementById("contactPopup").style.display = "none";
+    document.getElementById("mainContent").classList.remove("blur"); // 🔥 ADD THIS
+}
+function selectCity(city){
+    changeCity(city);
+}
+</script>
+
+
+<div id="contactPopup" class="popup">
+  <div class="popup-box">
+
+    <div class="popup-header">
+      <div>
+        <h2>Contact Us</h2>
+      </div>
+      <button onclick="closeContactPopup()">✖</button>
+    </div>
+
+    <div class="popup-body" style="text-align:left; line-height:1.7;">
+
+      <p>You may contact us using the information below:</p><br>
+
+      <p><b>Merchant Legal entity name:</b><br>
+      Janhavi Tours And Travels</p>
+
+      <p><b>Registered Address:</b><br>
+      Dattanagar,Shani Nagar Katarj Pune - 415052</p>
+
+      <p><b>Operational Address:</b><br>
+      Same as above</p>
+
+      <p><b>Telephone No:</b><br>
+<a href="tel:+917057905003" style="color:#16a34a; text-decoration:none;">
+📞 +91 70579 05003
+</a></p>
+
+<p><b>Email:</b><br>
+<a href="kdtoursandtravals@gmail.com" style="color:#16a34a; text-decoration:none;">
+✉️ kdtoursandtravals@gmail.com
+</a></p>
+
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
